@@ -1,0 +1,27 @@
+.contcards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    height: max-content;
+}
+
+
+/*  */
+
+.sas {
+    width: 30%;
+    margin: 1rem;
+}
+
+@media (min-width:300px) and (max-width:720px) {
+    .sas {
+        width: 80%;
+    }
+}
+
+@media (min-width:721px) and (max-width:1200px) {
+    .sas {
+        width: 45%;
+    }
+}

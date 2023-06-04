@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.dataTables.min.css" /> -->
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/styleconsultas.css" />
+    <title>NorthWind</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableexport.min.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        var datos = [];
+        var datos2 = [];
+        var datos3 = [];
+        var datos4 = [];
+        var datos5 = [];
+        var anio = 0
+        var idp = 0
+
+
+        function exportar(axx) {
+            var formattedData = google.visualization.dataTableToCsv(axx);
+            var blob = new Blob([formattedData], {
+                type: 'text/csv;charset=utf-8;'
+            });
+
+            if (navigator.msSaveBlob) { // Para IE/Edge
+                navigator.msSaveBlob(blob, 'chart_data.csv');
+            } else {
+                var link = document.createElement('a');
+                if (link.download !== undefined) {
+                    var url = URL.createObjectURL(blob);
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', 'chart_data.csv');
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            }
+        }
+        var sinn;
+        var aux3;
+
+        function exportar2() {
+
+
+            /*for (var i = 0; i < aux2.length; i++) {
+                for (var j = 1; j < aux2[i].length; j++) {
+                    console.log(i + ' = ' + aux2[i][j]);
+                    csvContent += aux2[i][j] + ",\r\n";
+                }
+
+            }*/
+            var csvContent = "data:text/csv;charset=utf-8,";
+            var array1 = [1, 2, 3, 4, 5, 6];
+            var array2 = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+            var data = [];
+            var arraux = [];
+            //arraux.push(aux2[0], aux2[1]);
+            for (var i = 0; i < array1.length; i++) {
+                data.push([array1[i], array2[i]]);
+            }
+            for (var i = 0; i < aux3[0].length; i++) {
+                //console.log(aux2[0][i] + '==' + aux2[1][i])                
+                arraux.push([(aux3[0][i] + '').replace(/[^a-zA-Z0-9 ]/g, ''), (aux3[1][i] + '').replace(/[^a-zA-Z0-9 ]/g, '')]);
+            }
+            arraux.forEach(function(row) {
+                var rowString = row.join(",");
+                csvContent += rowString + "\r\n";
+            });
+
+            sinn = data;
+
+
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "chart_data2.csv");
+            link.style.visibility = 'hidden';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+
+            /*var formattedData = google.visualization.dataTableToCsv(aux2);
+            var blob = new Blob([formattedData], {
+                type: 'text/csv;charset=utf-8;'
+            });
+
+            if (navigator.msSaveBlob) { // Para IE/Edge
+                navigator.msSaveBlob(blob, 'chart_data2.csv');
+            } else {
+                var link = document.createElement('a');
+                if (link.download !== undefined) {
+                    var url = URL.createObjectURL(blob);
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', 'chart_data2.csv');
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            }*/
+        }
+
+
+
+        $(document).ready(function() {
+
+            $.ajax({
+                url: 'http://192.168.165.223:8080/Product/ConsultaProductos',
+                method: 'GET',
+                dataType: 'json',
+                success: function(datoo) {
+
+                    $('#tablaProductos').DataTable({
+                        responsive: true,
+                        data: datoo,
+                        columns: [{
+                            title: 'Nombre',
+                            data: 'nombre',
+
+                        }, {
+                            title: 'Cantidad por unidad',
+                            data: 'cantidadxUnidad',
+                        }, {
+                            title: 'Precio',
+                            data: 'precio',
+                        }],
+                        order: [
+                            [1, 'desc'],
+                            [0, 'asc']
+                        ]
+                    });
+
+                    cargarG2();
+
+
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+
+            });
+
+
+        });
+
+
+
+        function cargarTabla() {
+            var lista = []
+            var Finicial = document.getElementById("Finicial").value
+            var Ffinal = document.getElementById("Ffinal").value
+
+            var idp = document.getElementById("selectId").value
+            $.ajax({
+                url: 'http://192.168.165.223:8080/Product/GetConsulta?pid=' + idp + '&finicial=' + Finicial + '&ffinal=' + Ffinal + '',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+
+                    lista = data;
+                    otratabla(lista)
+                    document.getElementById("btnEnviar").disabled = true;
+
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+
+            });
+
+        }
+
+
+
+
+        function otratabla(tabla) {
+
+            $('#tableConsulta').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'pdf',
+                ],
+                data: tabla,
+                columns: [{
+                    title: 'Cantidad de ventas',
+                    data: 'movId',
+
+                }, {
+                    title: 'Fecha',
+                    data: 'movDate',
+
+                }, ],
+                order: [
+                    [1, 'desc'],
+                    [0, 'asc']
+                ]
+            });
+        }
+
+        function otratabla2(tabla) {
+
+            $('#tableConsulta2').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                    'csv', 'excel', 'pdf',
+                ],
+                data: tabla,
+                columns: [{
+                    title: 'Nombre del Producto',
+                    data: 'prodName',
+                }, {
+                    title: 'Id del moviento',
+                    data: 'idmov',
+
+                }, {
+                    title: 'Cantidad de ventas',
+                    data: 'movId',
+
+                }, {
+                    title: 'Fecha',
+                    data: 'movDate',
+
+                }, ],
+                order: [
+                    [1, 'desc'],
+                    [0, 'asc']
+                ]
+            });
+        }
+
+        function cargarG1() {
+            var lista = []
+            var anio = document.getElementById("anio").value;
+            $.ajax({
+                url: 'http://192.168.165.223:8080/Product/UltimaConsulta?anio=' + anio,
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+
+
+                    document.getElementById("btnEnviarC1").disabled = true;
+
+                    drawChart1(data);
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+
+            });
+        }
+        google.charts.load("current", {
+            packages: ["corechart", 'controls']
+        });
+
+        //google.charts.setOnLoadCallback(drawChart);
+        var valoresFin = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+        var aux;
+        var aux2;
+
+        function drawChart1(mylista) {
+            var data = new google.visualization.DataTable();
+            datos = mylista;
+            var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            data.addColumn('string', 'Nombre');
+            data.addColumn('number', 'Ventas($)');
+            for (var i = 0; i < datos.length; i++) {
+                var item = mylista[i];
+                valoresFin[item['mes'] - 1] += item['totalVentas'];
+            }
+            for (var i = 0; i < valoresFin.length; i++) {
+                var item = mylista[i];
+                data.addRow([meses[i], valoresFin[i]]);
+
+            }
+            aux = data;
+            var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard'));
+            var slider = new google.visualization.ControlWrapper({
+                controlType: 'NumberRangeFilter',
+                containerId: 'slider',
+                options: {
+                    filterColumnLabel: 'Ventas($)'
+                }
+            });
+            var chart = new google.visualization.ChartWrapper({
+                chartType: 'ColumnChart',
+                containerId: 'piechart',
+                options: {
+                    title: mylista["prodName"]
+                }
+            });
+            var options = {
+                title: mylista["prodName"]
+            };
+            const programmaticTabla = new google.visualization.ChartWrapper({
+                chartType: "Table",
+                containerId: "table_div",
+                options: {
+                    width: 500,
+                    height: 500,
+                    legend: "none",
+                    chartArea: {
+                        left: 15,
+                        top: 15,
+                        right: 0,
+                        bottom: 0
+                    },
+                    pieSliceText: "value",
+                },
+                'view': {
+                    'columns': [0, 1]
+                }
+            });
+            dashboard.bind(slider, chart).bind(slider, programmaticTabla);
+            dashboard.draw(data);
+            /* var chart = new google.visualization.ColumnChart(document.getElementById('piechart'));
+             chart.draw(data, options);*/
+
+        }
+
+        function cargarTri() {
+            var anio = document.getElementById("anioTri").value;
+            $.ajax({
+                url: 'http://192.168.165.223:8080/Product/GetConsulta4?anio=' + anio,
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    datos2 = data;
+                    console.log(data);
+                    //drawChart2();
+                    $.ajax({
+                        url: 'http://192.168.165.223:8080/Product/GetConsulta5?anio=' + anio,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                            datos3 = data;
+                            $.ajax({
+                                url: 'http://192.168.165.223:8080/Product/GetConsulta6?anio=' + anio,
+                                method: 'GET',
+                                dataType: 'json',
+                                success: function(data) {
+                                    datos4 = data;
+                                    $.ajax({
+                                        url: 'http://192.168.165.223:8080/Product/GetConsulta7?anio=' + anio,
+                                        method: 'GET',
+                                        dataType: 'json',
+                                        success: function(data) {
+                                            datos5 = data;
+
+                                            //drawChart2();
+                                            drawChart3(data);
+                                        },
+                                        error: function(error) {
+                                            console.log('Error:', error);
+                                        }
+
+                                    });
+                                },
+                                error: function(error) {
+                                    console.log('Error:', error);
+                                }
+
+                            });
+                        },
+                        error: function(error) {
+                            console.log('Error:', error);
+                        }
+
+                    });
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+            });
+
+
+
+        }
+
+        function cargarG2() {
+
+            $.ajax({
+                url: 'http://192.168.165.223:8080/Product/IdSolicitud',
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    var ids = document.getElementById("selectId");
+                    for (var i = 0; i < data.length; i++) {
+                        var option = document.createElement('option')
+                        option.innerHTML = data[i]["nombre"];
+                        option.value = data[i]["idP"]
+                        ids.appendChild(option)
+                    }
+
+
+                },
+                error: function(error) {
+                    console.log('Error:', error);
+                }
+
+            });
+        }
+
+
+        var lista = [];
+
+
+        var valoresFin3 = [0, 0, 0, 0, 0];
+
+        function drawChart3(mylista) {
+            var mAux = [];
+            var data = new google.visualization.DataTable();
+            if (document.getElementById('selecttri').value == 1) {
+                for (var i = 0; i < datos2.length; i++) {
+                    mAux.push(datos2[i]["nombre"]);
+                }
+                mylista = datos2;
+            } else if (document.getElementById('selecttri').value == 2) {
+                for (var i = 0; i < datos3.length; i++) {
+                    mAux.push(datos3[i]["nombre"]);
+                }
+                mylista = datos3;
+            } else if (document.getElementById('selecttri').value == 3) {
+                for (var i = 0; i < datos4.length; i++) {
+                    mAux.push(datos4[i]["nombre"]);
+                }
+                mylista = datos4;
+            } else if (document.getElementById('selecttri').value == 4) {
+                for (var i = 0; i < datos5.length; i++) {
+                    mAux.push(datos5[i]["nombre"]);
+                }
+                mylista = datos5;
+            }
+
+            //var meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+            data.addColumn('string', 'Nombre');
+            data.addColumn('number', 'Ventas($)');
+            for (var i = 0; i < mylista.length; i++) {
+                var item = mylista[i];
+                valoresFin3[i] += item['unidadesVendidas'];
+            }
+            for (var i = 0; i < valoresFin3.length; i++) {
+                data.addRow([mAux[i], valoresFin3[i]]);
+
+            }
+            aux3 = data;
+            var dashboard = new google.visualization.Dashboard(document.getElementById('dashboard3'));
+            var slider = new google.visualization.ControlWrapper({
+                controlType: 'NumberRangeFilter',
+                containerId: 'slider3',
+                options: {
+                    filterColumnLabel: 'Ventas($)'
+                }
+            });
+            var chart = new google.visualization.ChartWrapper({
+                chartType: 'ColumnChart',
+                containerId: 'piechart3',
+                options: {
+                    title: mylista["prodName"]
+                }
+            });
+            var options = {
+                title: mylista["prodName"]
+            };
+            const programmaticTabla = new google.visualization.ChartWrapper({
+                chartType: "Table",
+                containerId: "table_div3",
+                options: {
+                    width: 500,
+                    height: 500,
+                    legend: "none",
+                    chartArea: {
+                        left: 15,
+                        top: 15,
+                        right: 0,
+                        bottom: 0
+                    },
+                    pieSliceText: "value",
+                },
+                'view': {
+                    'columns': [0, 1]
+                }
+            });
+            dashboard.bind(slider, chart).bind(slider, programmaticTabla);
+            dashboard.draw(data);
+            /* var chart = new google.visualization.ColumnChart(document.getElementById('piechart'));
+             chart.draw(data, options);*/
+
+        }
+    </script>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <div class="headnav">
+            <img class="logito" src="../src/LogoNW.png" alt="Logo" />
+
+            <div class="menuhead">
+                <button type="button" onclick="window.location.href='#tabladiv'">Lista de Productos</button>
+                <button type="button" onclick="window.location.href='#consu1'">Consulta 1</button>
+                <button type="button" onclick="window.location.href='#consu2'">Consulta 2</button>
+                <button type="button" onclick="window.location.href='#consu3'">Consulta 3</button>
+            </div>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img class="iconito" src="../src/profile-icon.png" alt="" />
+          </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="../Index.html">Cerrar Sesión</a></li>
+                    <li>
+                        <a class="dropdown-item" href="#"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="binvenida">
+            <p>Lista de productos</p>
+        </div>
+
+        <div class="tabladiv" id="tabladiv">
+            <table class="table table-striped" id="tablaProductos"></table>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-duration="1500" id="consu1">
+            <div class="card-header">
+                <h5 class="card-title">CONSULTA 1</h5>
+            </div>
+            <div class="card-body">
+
+                <p class="card-text">En un periodo indicado de un año, desglosar por trimestre, cuales fueron los productos dentro del Top 5, considerando las unidades vendidas</p>
+                <div>
+
+
+                    <button type="button" class="btn btn-success" onClick="exportar(aux3)">Excel</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="dashboard3" data-aos="zoom-in-up" data-aos-duration="1500">
+            <div class="conte">
+                <div class="conte2">
+                    <div>
+                        <input type="text" id="anioTri" value="" style="margin-right: 5px;">
+                        <button type="button" class="btn btn-primary" id="btnEnviarC1" onClick="cargarTri()">Enviar</button>
+                    </div>
+                    <select class="form-select" aria-label="Default select example" style="width: 20%;" name="select" id="selecttri" onchange="drawChart3(5);">
+                <option value="1">TRIMESTRE 1</option>
+                <option value="2">TRIMESTRE 2</option>
+                <option value="3">TRIMESTRE 3</option>
+                <option value="4">TRIMESTRE 4</option>
+                </select>
+                </div>
+                <div id="slider3"></div>
+                <div id="piechart3" style="width: 700px; height: 500px;"></div>
+            </div>
+            <div id="table_div3"></div>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-duration="1500" id="consu2">
+            <div class="card-header">
+                <h5 class="card-title">CONSULTA 2</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Para un producto elegido y un periodo indicado, mostrar el desglose por mes del comportamiento de ventas de dicho producto</p>
+                <div>
+                    <label for="">Fecha inicial</label>
+                    <input type="date" id="Finicial" value="1996-01-01" min="1996-01-01" max="1999-12-31">
+                    <label for="">Fecha Final</label>
+                    <input type="date" id="Ffinal" value="1996-01-01" min="1996-01-01" max="1999-12-31">
+                    <label for="">Producto ID</label>
+                    <!--<input type="text" name="" id="idprod">-->
+                    <select name="select" id="selectId">
+                      </select>
+
+
+                    <button type="button" id="btnEnviar" class="btn btn-primary" onClick="cargarTabla()">Enviar</button>
+                    <button type="submit" class="btn btn-danger" onClick="location.reload()">Limpiar</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabladiv">
+            <table class="table table-striped" id="tableConsulta"></table>
+        </div>
+
+        <div class="card" data-aos="fade-up" data-aos-duration="1500" id="consu3">
+            <div class="card-header">
+                <h5 class="card-title">CONSULTA 3</h5>
+            </div>
+            <div class="card-body">
+
+                <p class="card-text">Comportamiento($) de ventas por mes para un periodo de fechas indicado</p>
+                <div>
+                    <label for="">Año</label>
+                    <input type="text" id="anio" value="">
+                    <button type="button" class="btn btn-primary" id="btnEnviarC1" onClick="cargarG1()">Enviar</button>
+                    <button type="submit" class="btn btn-danger" onClick="location.reload()">Limpiar</button>
+                    <button type="button" id="btnEnviar" class="btn btn-success" onClick="exportar(aux)">Excel</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="dashboard" data-aos="zoom-in-up" data-aos-duration="1500">
+            <div class="conte">
+                <div id="slider"></div>
+                <div id="piechart" style="width: 700px; height: 500px;"></div>
+            </div>
+            <div id="table_div"></div>
+        </div>
+        <div class="tabladiv3">
+            <table class="table table-striped" id="tableConsulta2"></table>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js">
+    </script>
+    <script src="../js/script.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+
+</html>

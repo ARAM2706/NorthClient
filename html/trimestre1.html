@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gráfica y tabla</title>
+    <!-- Importar la librería de Google Chart -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+</head>
+
+<body>
+    <h1>Gráfica y tabla</h1>
+
+    <!-- Controlador deslizante para seleccionar el rango de años -->
+    <input type="range" id="yearRange" min="1996" max="1998" step="1" value="1996" onchange="getData()">
+
+    <!-- Div para la gráfica -->
+    <div id="chart_div" style="width: 800px; height: 400px;"></div>
+
+    <!-- Div para la tabla -->
+    <div id="table_div"></div>
+
+    <script>
+        // Consumir la API y obtener los datos
+        function getData() {
+            var anio = document.getElementById("yearRange").value;
+            var url = "https://localhost:7298/Product/GetConsulta4?anio=" + anio; // Reemplaza con la URL de tu API
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    // Llamar a las funciones para dibujar la gráfica y la tabla
+                    drawChart(data);
+                    drawTable(data);
+                })
+                .catch(error => {
+                    console.error("Error al obtener los datos:", error);
+                });
+        }
+
+        // Dibujar la gráfica de Google Chart
+        function drawChart(data) {
+            // Convertir los datos en un array
+            var dataArray = [
+                ['Nombre', 'Unidades Vendidas']
+            ];
+
+            data.forEach(item => {
+                dataArray.push([item.nombre, item.unidadesVendidas]);
+            });
+
+            // Crear el objeto de datos de Google Chart
+            var chartData = google.visualization.arrayToDataTable(dataArray);
+
+            // Configurar las opciones de la gráfica
+            var options = {
+                title: 'Top 5 Productos más vendidos',
+                vAxis: {
+                    title: 'Unidades Vendidas'
+                },
+                hAxis: {
+                    title: 'Nombre del Producto'
+                },
+                chartArea: {
+                    width: '50%',
+                    height: '50%'
+                }
+            };
+            // Crear la instancia de la gráfica
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
+            chart.draw(chartData, options);
+        }
+
+
+
+        // Dibujar la tabla de Google Chart
+        function drawTable(data) {
+            // Crear el objeto de datos de Google Chart
+            var tableData = new google.visualization.DataTable();
+            tableData.addColumn('string', 'Nombre');
+            tableData.addColumn('number', 'Unidades Vendidas');
+
+            data.forEach(item => {
+                tableData.addRow([item.nombre, item.unidadesVendidas]);
+            });
+
+            // Configurar las opciones de la tabla
+            var options = {
+                showRowNumber: true,
+                width: '50%',
+                height: '50%'
+            };
+
+            // Crear la instancia de la tabla
+            var table = new google.visualization.Table(document.getElementById('table_div'));
+            table.draw(tableData, options);
+        }
+
+        // Cargar la librería de Google Chart y llamar a la función getData() después de cargarla
+        google.charts.load('current', {
+            'packages': ['corechart', 'table']
+        });
+        google.charts.setOnLoadCallback(getData);
+    </script>
+</body>
+
+</html>
+s

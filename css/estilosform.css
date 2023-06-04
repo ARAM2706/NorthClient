@@ -1,0 +1,131 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.butt{
+    display: flex;
+    justify-content: center !important;
+}
+
+
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+}
+
+
+.container{
+    position: relative;
+    width: 100%;
+    padding:5px;
+    margin: 0 15px;
+    
+  
+    box-shadow: 0 5px 10px rgb(0, 0, 0, 0);
+}
+
+.conte{
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.container header{
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.container form{
+    position: relative;
+    margin-top: 0px;
+    
+    background-color: #fff;
+}
+
+.container form .details{
+    margin-top: 30px;
+}
+
+.container form .details-ID{
+    font-size: 28px;
+    font-weight: 500;
+    margin: 6px 0;
+    margin-top: 10px;
+}
+
+.container form .fields{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.container form .input-field{
+    display: flex;
+    width: calc(100% / 3 - 15px);
+    flex-direction: column;
+    margin: 4px 0;
+}
+
+
+
+.input-field label{
+    font-size: 16px;
+    font-weight: 500;
+    margin: 2px 0;
+}
+
+.input-field input{
+    border: 1px solid #aaa;
+    padding: 0 15px;
+    height: 30px;
+    margin: 8px 0;
+}
+
+
+
+@media (max-width: 750px){
+    .container form .input-field{
+        width: calc(100% / 2 - 15px);
+    }
+
+    .se{
+        width: 100%;
+    }
+
+    img{
+        width: 80px !important;
+    }
+}
+
+@media (max-width: 550px){
+    .container form .input-field{
+        width: 100%;
+    }
+
+    .se{
+        width: 100%;
+    }
+
+    img{
+        width: 80px !important;
+    }
+}
+
+
+button{
+    width: 90px !important;
+    height: 40px !important;
+}
+
+a{
+    margin-top: 4px !important;
+    width: 100px !important;
+    height: 40px !important;
+}

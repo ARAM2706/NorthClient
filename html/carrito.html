@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleventa.css">
+    <link rel="stylesheet" href="../css/stylecarrito.css">
+    <title>NORTWIND</title>
+</head>
+
+<body>
+    <div class="headnav">
+        <img src="../src/LogoNW.png" alt="Logo">
+        <div class="logos">
+            <div class="loader" id="loader">
+                <div class="cont_loader">
+                    <img id="img1" src="../src/SwitchLogo.png" alt="">
+                </div>
+                <div class="cont_loader2">
+                    <img id="img2" src="../src/PSLogo.png" alt="">
+                </div>
+                <div class="cont_loader3">
+                    <img id="img3" src="../src/XboxLogo.png" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="menuhead">
+            <button type="button" onclick="location.href='#carouselExampleControls'">Nuestros Productos</button>
+            <button type="button" onclick="location.href='#servicios'">Servicio</button>
+            <button type="button" onclick="location.href='#carouselExampleControls2'">Opiniones</button>
+            <button type="button" onclick="location.href='#contacto'">Contacto</button>
+        </div>
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="../src/profile-icon.png" alt="">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="#">Iniciar Sesión</a></li>
+                <li><a class="dropdown-item" href="#">Crear Cuenta</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-8">
+                <h3>Productos:</h3>
+                <ul class="list-group " id="list-products">                                        
+                  </ul>
+                  <button type="button" class="btn btn-primary d-flex float-end mt-2">Comprar ahora</button>
+             </div>
+             
+             
+        </div>     
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../js/carrito.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

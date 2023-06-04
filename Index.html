@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stylefoot.css">
+    <title>NorthWind</title>
+</head>
+
+<body>
+    <div class="contenedor">
+        <div class="headnav">
+            <div class="logos">
+                <div class="loader">
+                    <img src="src/LogoNW.png" alt="Logo">
+                </div>
+            </div>
+            <div class="logos">
+                <div class="loader" id="loader">
+                    <div class="cont_loader">
+                        <img id="img1" src="src/SwitchLogo.png" alt="">
+                    </div>
+                    <div class="cont_loader2">
+                        <img id="img2" src="src/PSLogo.png" alt="">
+                    </div>
+                    <div class="cont_loader3">
+                        <img id="img3" src="src/XboxLogo.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="menuhead">
+                <button type="button" onclick="location.href='#productos'">Nuestros Productos</button>
+                <button type="button" onclick="location.href='#servicios'">Servicio</button>
+                <button type="button" onclick="location.href='#opiniones'">Opiniones</button>
+                <button type="button" onclick="location.href='#contacto'">Contacto</button>
+            </div>
+            <div class="dropdown">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="src/profile-icon.png" alt="">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">Iniciar Sesión</a></li>
+                    <li><a class="dropdown-item" href="html/crearusuario.html">Crear Cuenta</a></li>
+                </ul>
+            </div>
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Te damos la bienvenida a Northwind Traders</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="login">
+                            <input type="text" name="" id="email" placeholder="Email">
+                            <input type="password" name="" id="password" placeholder="Password">
+                            <button class="btn" type="button" onclick="IniciarSesion()">Iniciar Sesión</button>
+                            <a href="html/listaInventario.html">¿Olvidaste tu contraseña?</a>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Acerca de nosotros -->
+        <div class="titulo" data-aos="fade-up" data-aos-duration="1500">
+            <p>Acerca de nosotros</p>
+        </div>
+        <div class="infonosotros">
+            <div data-aos="flip-left" data-aos-duration="1500" class="imglogo"><img src="src/LogoNW.png" alt="Logo"></div>
+            <div class="info" data-aos="fade-down" data-aos-duration="1500">
+                <p>La base de datos Northwind es una base de datos de muestra creada originalmente por Microsoft y utilizada como base para sus tutoriales en una variedad de productos de bases de datos durante décadas. La base de datos de Northwind contiene
+                    los datos de ventas de una empresa ficticia llamada "Northwind Traders"</p>
+            </div>
+        </div>
+        <!-- Nuestros Productos -->
+        <div class="titulo" data-aos="fade-up" data-aos-duration="1500" id="productos">
+            <p>Nuestros productos</p>
+        </div>
+        <div data-aos="fade-up" data-aos-duration="1500" id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div style="width: 100%; display: flex; flex-direction: row; justify-content: space-evenly;">
+                        <div class="card" style="width: 26%;">
+                            <div class="imgcard">
+                                <img src="src/Ps5.jpg" class="card-img-top" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Playstation 5</h5>
+                                <p class="card-text">PlayStation 5 es la quinta consola de videojuegos de sobremesa desarrollada por la empresa Sony Interactive Entertainment.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MXN $11,799.00</li>
+                                <li class="list-group-item">Envío grauito</li>
+                                <li class="list-group-item">★★★★★ opiniones</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Comprar ahora</a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 26%;">
+                            <div class="imgcard">
+                                <img src="src/MandoPs5.jpg" class="card-img-top" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Control inalámbrico DualSense</h5>
+                                <p class="card-text">Te presentamos el control inalámbrico DualSense, el nuevo e innovador control de PS5 con respuesta háptica, gatillos adaptativos y un nuevo diseño icónico.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MXN $1,490.00</li>
+                                <li class="list-group-item">Envío grauito</li>
+                                <li class="list-group-item">★★★★☆ opiniones</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Comprar ahora</a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 26%;">
+                            <div class="imgcard">
+                                <img src="src/JuegoPs5.jpg" class="card-img-top" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">God of War Ragnarök</h5>
+                                <p class="card-text">God of War Ragnarök es un videojuego de acción y aventuras desarrollado por Santa Monica Studio y publicado por Sony Interactive Entertainment.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MXN $1,399.00</li>
+                                <li class="list-group-item">Envío grauito</li>
+                                <li class="list-group-item">★★★★☆ opiniones</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Comprar ahora</a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div style="width: 100%; display: flex; flex-direction: row; justify-content: space-evenly;">
+                        <div class="card" style="width: 26%;">
+                            <div class="imgcard">
+                                <img src="src/Xbox.jpg" class="card-img-top" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Xbox Series X</h5>
+                                <p class="card-text">La Xbox Series X ofrece velocidades de cuadro sensacionalmente suaves de hasta 120 FPS con la explosión visual que ofrece HDR.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MXN $12,095.00</li>
+                                <li class="list-group-item">Envío grauito</li>
+                                <li class="list-group-item">★★★★★ opiniones</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Comprar ahora</a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 26%;">
+                            <div class="imgcard">
+                                <img src="src/MandoXbox.jpg" class="card-img-top" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Control inalámbrico Xbox</h5>
+                                <p class="card-text">Haz que tu experiencia de juego sea más envolvente con los accesorios y los controles Xbox para las consolas Xbox Series X</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MXN $1,295.00</li>
+                                <li class="list-group-item">Envío grauito</li>
+                                <li class="list-group-item">★★★★☆ opiniones</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Comprar ahora</a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 26%;">
+                            <div class="imgcard">
+                                <img src="src/JuegoXbox.jpg" class="card-img-top" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Halo Infinite</h5>
+                                <p class="card-text">Halo Infinite es un videojuego de disparos en primera persona de la franquicia de videojuegos de ciencia ficción actualmente desarrollada por 343 Industries.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MXN $749.00</li>
+                                <li class="list-group-item">Envío grauito</li>
+                                <li class="list-group-item">★★★★☆ opiniones</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Comprar ahora</a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div style="width: 100%; display: flex; flex-direction: row; justify-content: space-evenly;">
+                        <div class="card" style="width: 26%;">
+                            <div class="imgcard">
+                                <img src="src/Switch.jpg" class="card-img-top" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Nintendo Switch OLED</h5>
+                                <p class="card-text">Pantalla OLED de 7 pulgadas (17.78 cm) - Disfruta de colores brillantes y contrastes definidos en una pantalla que hace que los colores sean más intensos.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MXN $6,399.00</li>
+                                <li class="list-group-item">Envío grauito</li>
+                                <li class="list-group-item">★★★★☆ opiniones</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Comprar ahora</a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 26%;">
+                            <div class="imgcard">
+                                <img src="src/MandoSwitch.jpg" class="card-img-top" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Control Nintendo Switch - Joy-Con (L/R)</h5>
+                                <p class="card-text">Presentamos Joy-Con, controles que hacen posibles nuevos tipos de juegos, para usar con Nintendo Switch.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MXN $1,499.00</li>
+                                <li class="list-group-item">Envío grauito</li>
+                                <li class="list-group-item">★★★★☆ opiniones</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Comprar ahora</a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 26%;">
+                            <div class="imgcard">
+                                <img src="src/JuegoSwitch.jpg" class="card-img-top" alt="..."></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Mario Kart 8 Deluxe</h5>
+                                <p class="card-text">Mario Kart 8 Deluxe es un videojuego de carreras desarrollado y publicado por Nintendo para la consola Nintendo Switch.</p>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">MXN $1,099.00</li>
+                                <li class="list-group-item">Envío grauito</li>
+                                <li class="list-group-item">★★★★☆ opiniones</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Comprar ahora</a>
+                                <a href="#" class="card-link">Agregar al carrito</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button style="background: #d6d6d6b3; width: 5%;" class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden" >Previous</span>
+            </button>
+            <button style="background: #d6d6d6b3; width: 5%;" class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- Servicios -->
+        <div class="titulo" data-aos="fade-up" data-aos-duration="1500" id="servicios">
+            <p>Nuestros servicios</p>
+        </div>
+        <div class="servicios">
+            <div class="depserv" data-aos="flip-left" data-aos-duration="1500">
+                <div class="card" style="width: 100%; height: 100%;">
+                    <img src="src/consolaico.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Conoce nuestros increibles precios en consolas de ultima generación.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="depserv" data-aos="flip-right" data-aos-duration="1500">
+                <div class="card" style="width: 100%; height: 100%;">
+                    <img src="src/mandoico.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Conoce nuetros increibles precios en mandos.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="depserv" data-aos="flip-left" data-aos-duration="1500">
+                <div class="card" style="width: 100%; height: 100%;">
+                    <img src="src/juegoico.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Conoce nuetros increibles precios en juegos para las consolas de ultima generación.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="depserv" data-aos="flip-right" data-aos-duration="1500">
+                <div class="card" style="width: 100%; height: 100%;">
+                    <img src="src/devico.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">¿Tienes algun problema con tu articulo? ponte en contacto con nosotros para devolverlo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="depserv" data-aos="flip-left" data-aos-duration="1500">
+                <div class="card" style="width: 100%; height: 100%;">
+                    <img src="src/deliveryico.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Revisa si en tu ubicación hacemos entrregas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="depserv" data-aos="flip-right" data-aos-duration="1500">
+                <div class="card" style="width: 100%; height: 100%;">
+                    <img src="src/qfaico.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">¿Tienes alguna pregunta sobre nosotros?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Opiniones -->
+        <div class="titulo" data-aos="fade-up" data-aos-duration="1500" id="opiniones">
+            <p>Opiniones</p>
+        </div>
+        <div id="carouselExampleControls2" class="carousel slide" data-bs-ride="carousel" data-aos="fade-up" data-aos-duration="1500">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <div class="card mb-3" style="width: 100%; display: flex; flex-direction: row; justify-content: center;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="src/profile-icon.png" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">user89723612</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">★★★★☆</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card mb-3" style="width: 100%; display: flex; flex-direction: row; justify-content: center;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="src/profile-icon.png" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">user91237123</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">★★★★★</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="card mb-3" style="width: 100%; display: flex; flex-direction: row; justify-content: center;">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="src/profile-icon.png" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">user12383182</h5>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <p class="card-text"><small class="text-muted">★★★★☆</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls2" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <!-- Contacto -->
+        <div class="titulo" data-aos="fade-up" data-aos-duration="1500" id="contacto">
+            <p>Contactanos</p>
+        </div>
+        <div class="contacto">
+            <div class="infocontacto" data-aos="flip-up" data-aos-duration="1500">
+                <div class="data">
+                    <h6>📍Bulevar Juarez #141, Uriangato, Gto.</h6>
+                    <h6>📱(+52) 445-111-0227</h6>
+                    <h6>✉️contactoNW@northwind.com</h6>
+                </div>
+            </div>
+            <div class="coment" data-aos="flip-up" data-aos-duration="1500">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nombre" aria-label="Username">
+                    <input type="text" class="form-control" placeholder="Email" aria-label="Server">
+                </div>
+                <div class="input-group">
+                    <textarea class="form-control" placeholder="Comentario" aria-label="With textarea"></textarea>
+                </div>
+                <button type="button" class="btn btnenviar">Enviar</button>
+            </div>
+        </div>
+        <div class="mapa" data-aos="zoom-in-up" data-aos-duration="1500">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1574.909043541378!2d-101.164080742285!3d20.142970287879148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842cfab50da5f031%3A0x8c025f0a21e47079!2sAv.%20Benito%20Ju%C3%A1rez%20141%2C%20Cuitzillo%2C%2038980%20Uriangato%2C%20Gto.!5e0!3m2!1ses-419!2smx!4v1684032587334!5m2!1ses-419!2smx"
+                width="80%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+
+        <div class="footer">
+            <div class="imgfoot">
+                <img src="src/LogoNW.png" alt="Logo">
+            </div>
+            <div class="footinfo">
+                <p>@Nortwind Traders Company</p>
+            </div>
+            <div class="footsocial">
+                <img src="src/facebook.png" alt="">
+                <img src="src/instagram.png" alt="">
+            </div>
+        </div>
+
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>
+<

@@ -1,0 +1,592 @@
+html {
+    scroll-behavior: smooth;
+}
+
+.butt {
+    display: flex;
+    justify-content: center !important;
+}
+
+.color {
+    background: red !important;
+}
+
+table {
+    margin-top: 100px;
+    text-align: justify;
+}
+
+.contenedor {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: max-content;
+}
+
+.headnav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: end;
+    width: 100%;
+    height: 10rem;
+    background: rgb(221, 221, 221);
+    background: linear-gradient(90deg, rgba(221, 221, 221, 1) 0%, #00619b 50%, rgba(221, 221, 221, 1) 100%);
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.binvenida {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px;
+    width: 68%;
+    height: 5rem;
+    background: #00619b;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.binvenida p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.letras {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 60%;
+}
+
+.letra {
+    width: 10%;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.letra:hover {
+    color: #ffffff;
+    transform: scale(1.1);
+}
+
+.letra1 {
+    animation: letras 500ms linear;
+}
+
+.letra2 {
+    animation: letras 500ms 500ms linear;
+}
+
+.letra3 {
+    animation: letras 500ms 1s linear;
+}
+
+.letra4 {
+    animation: letras 500ms 1.5s linear;
+}
+
+.letra5 {
+    animation: letras 500ms 2s linear;
+}
+
+.letra6 {
+    animation: letras 500ms 2.5s linear;
+}
+
+.letra7 {
+    animation: letras 500ms 3s linear;
+}
+
+.letra8 {
+    animation: letras 500ms 3.5s linear;
+}
+
+.letra9 {
+    animation: letras 500ms 4s linear;
+}
+
+
+/*  */
+
+.loader img {
+    object-fit: cover;
+    height: 90%;
+}
+
+.logos {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.menuhead {
+    width: 45%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.menuhead button {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid;
+    font-weight: bold;
+    transition: 0.3s linear;
+}
+
+.menuhead button:hover {
+    color: white;
+    background: #00619b;
+    border-radius: 5px;
+    transition: 0.3s linear;
+}
+
+#dropdownMenuButton1 {
+    border-radius: 0;
+    border-bottom: 1px solid;
+    transition: 0.3s linear;
+}
+
+#dropdownMenuButton1:hover {
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid white;
+    background: #00619b;
+    transition: 0.3s linear;
+}
+
+.dropdown {
+    width: 10%;
+}
+
+.dropdown img {
+    width: 25%;
+}
+
+#login {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#login input {
+    margin: 0.5rem;
+    width: 60%;
+    border: none;
+    transition: 0.3s linear;
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+#login input:hover {
+    border: 2px solid #00619b;
+    border-radius: 5px;
+    transition: 0.3s linear;
+}
+
+#login button {
+    margin: 0.5rem;
+    width: 60%;
+    background: #00619b;
+    color: white;
+    transition: 0.3s linear;
+}
+
+#login button:hover {
+    background: white;
+    border: 1px solid #00619b;
+    color: black;
+    transition: 0.3s linear;
+}
+
+
+/* ------------------ */
+
+.titulo {
+    width: 90%;
+    border: none;
+    background: rgb(221, 221, 221);
+    background: linear-gradient(90deg, rgba(221, 221, 221, 1) 0%, rgba(0, 97, 155, 1) 50%, rgba(221, 221, 221, 1) 100%);
+    margin-top: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    display: flex;
+    justify-content: center;
+}
+
+.titulo p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+
+/* -------------------- */
+
+.infonosotros {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    border-radius: 10px;
+    background: #d6d6d676;
+    box-shadow: 0 0 10px #00619b;
+}
+
+.imglogo {
+    width: 30%;
+}
+
+.imglogo img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.info {
+    width: 65%;
+    padding-top: 21%;
+}
+
+.carousel {
+    margin: 2rem 0 2rem 0;
+    width: 90%;
+}
+
+.card,
+.card li {
+    background: #d6d6d676;
+}
+
+.imgcard {
+    display: flex;
+    justify-content: center;
+    background: white;
+    width: 100%;
+    height: 200px;
+}
+
+.imgcard img {
+    object-fit: contain;
+    width: 50%;
+}
+
+.servicios {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.depserv {
+    border-radius: 5px;
+    width: 15%;
+    transition: 0.2s linear;
+}
+
+.depserv:hover {
+    transform: scale(1.1);
+    border: 1px solid #00619b;
+    transition: 0.2s linear;
+    color: #00619b;
+}
+
+.opimg {
+    width: 40%;
+    justify-content: center;
+    display: flex;
+    padding: 2px;
+    background: #e9e9e9ba;
+    border-radius: 50%;
+}
+
+.contacto {
+    margin: 1rem 0 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 90%;
+}
+
+.coment {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.btnenviar {
+    width: max-content;
+    margin-top: 1rem;
+    color: rgb(255, 255, 255);
+    background: #00619b;
+    border: 1px solid;
+}
+
+.btnenviar:hover {
+    color: black;
+    background: white;
+    border: 1px solid #00619b;
+}
+
+.mapa {
+    width: 100%;
+    height: 450px;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+
+/* CARGA */
+
+.loader {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 90%;
+}
+
+.cont_loader,
+.cont_loader2,
+.cont_loader3 {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 100%;
+    /* background: white; */
+}
+
+#img1,
+#img2,
+#img3 {
+    object-fit: contain;
+    width: 100%;
+}
+
+.cont_loader {
+    animation: loadanim2 4s infinite linear;
+}
+
+.cont_loader2 {
+    animation: loadanim 4s infinite linear;
+}
+
+.cont_loader3 {
+    animation: loadanim3 4s infinite linear;
+}
+
+
+/* Agregar Usuarios */
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    background-color: #fff;
+    border: 1px solid #006aff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00619b;
+    margin: 2%;
+}
+
+.form label {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.form input {
+    width: 100%;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 3px solid rgb(220, 220, 220);
+    box-shadow: 0 6px 7px -4px black;
+    transition-duration: 0.6s;
+}
+
+.form input:focus,
+input:hover {
+    border: 0;
+    border-bottom: 3px solid #006aff;
+    border-radius: 10px;
+    transition-duration: 0.6s;
+}
+
+.form select {
+    width: 100%;
+    height: 30px;
+    border: 0;
+    background: transparent;
+    border-bottom: 3px solid rgb(220, 220, 220);
+    box-shadow: 0 6px 7px -4px black;
+    transition-duration: 0.6s;
+}
+
+.form select:hover {
+    border: 0;
+    border-bottom: 3px solid #006aff;
+    border-radius: 10px;
+    transition-duration: 0.6s;
+}
+
+.form button {
+    width: 100%;
+    display: block;
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #006aff;
+    border: 1px solid white;
+    color: #fff;
+    box-shadow: 0 0 5px black;
+    border-radius: 8px;
+    cursor: pointer;
+    transition-duration: 0.6s;
+}
+
+.form button:hover {
+    background-color: white;
+    color: #006aff;
+    border: 1px solid #006aff;
+    transition-duration: 0.6s;
+}
+
+.information {
+    width: 30%;
+    margin: 5px;
+}
+
+
+/*  */
+
+@keyframes loadanim {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 1;
+    }
+    33% {
+        opacity: 0;
+        transform: scale(0.8);
+        z-index: -1;
+    }
+    66% {
+        opacity: 0;
+        transform: scale(0.8);
+        z-index: -1;
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 1;
+    }
+}
+
+@keyframes loadanim2 {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+        z-index: -1;
+    }
+    33% {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 1;
+    }
+    66% {
+        opacity: 0;
+        transform: scale(0.8);
+        z-index: -1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+        z-index: -1;
+    }
+}
+
+@keyframes loadanim3 {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+        z-index: -1;
+    }
+    33% {
+        opacity: 0;
+        transform: scale(0.8);
+        z-index: -1;
+    }
+    66% {
+        opacity: 1;
+        transform: scale(1);
+        z-index: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.8);
+        z-index: -1;
+    }
+}
+
+@keyframes letras {
+    0% {
+        transform: scale(1.5) translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (min-width:300px) and (max-width:720px) {
+    .headnav {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: max-content;
+    }
+    .depserv {
+        width: 45%;
+    }
+    .information {
+        width: 80%;
+    }
+    .form button {
+        width: 60%;
+    }
+}
+
+@media (min-width:721px) and (max-width:1200px) {
+    .menuhead {
+        width: 50%;
+    }
+    .depserv {
+        width: 30%;
+    }
+    .information {
+        width: 45%;
+    }
+    .form button {
+        width: 60%;
+    }
+}

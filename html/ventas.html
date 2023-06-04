@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/styleventa.css">
+    <title>NORTWIND</title>
+</head>
+
+<body>
+    <div class="headnav">
+        <img src="../src/LogoNW.png" alt="Logo">
+        <div class="logos">
+            <div class="loader" id="loader">
+                <div class="cont_loader">
+                    <img id="img1" src="../src/SwitchLogo.png" alt="">
+                </div>
+                <div class="cont_loader2">
+                    <img id="img2" src="../src/PSLogo.png" alt="">
+                </div>
+                <div class="cont_loader3">
+                    <img id="img3" src="../src/XboxLogo.png" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- Desde aqui es para poner el menu en la de ventas -->
+        <div class="dropdown">
+            <button class="btn dropdown-toggles texto" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Categorías</button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop" style="cursor: pointer;">PlayStation</a></li>
+                <li><a class="dropdown-item">Switch</a></li>
+                <li><a class="dropdown-item">Xbox</a></li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn dropdown-toggles texto" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Historial</button>
+        </div>
+        <div class="dropdown">
+            <button class="btn dropdown-toggles texto" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Mis compras</button>
+        </div>
+        <div class="dropdown">
+            <button class="btn dropdown-toggles texto" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Ayuda</button>
+        </div>
+
+
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="../src/carrocompras.png" alt="">
+              </button>
+            <ul class="dropdown-menu" style="width:300px;margin-left:-100px;" id="ltcarrito" aria-labelledby="dropdownMenuButton1">
+                <li id="btn-buynow">
+                    <div class="text-center"><button class="btn-primary" onclick="window.location.href='../Index.html'">Comprar ahora</button></div>
+                </li>
+            </ul>
+        </div>
+        <div class="dropdown">
+            <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="../src/Usuario.png" alt="">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                <li>
+                    <a class="dropdown-item" href="" id="NombreUsuario"></a>
+                </li>
+                <li><a class="dropdown-item" href="../Index.html">Cerrar Sesión</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+    <div class="contcards">
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/Ps5.jpg" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Consola Playstation 5</h5>
+                <p class="card-text">PlayStation 5 es la quinta consola de videojuegos de sobremesa desarrollada por la empresa Sony Interactive Entertainment.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $11,799.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/JuegoPs5.jpg" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">God of War Ragnarök</h5>
+                <p class="card-text">God of War Ragnarök es un videojuego de acción y aventuras desarrollado por Santa Monica Studio y publicado por Sony Interactive Entertainment.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $1,399.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'JuegoPs5.jpg', 'Juego PlayStation 5', 1399)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/MandoPs5.jpg" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Control inalámbrico DualSense</h5>
+                <p class="card-text">Control inalámbrico DualSense, el nuevo e innovador control de PS5 con respuesta háptica, gatillos adaptativos y un nuevo diseño icónico.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $1,490.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'MandoPs5.jpg', 'Mando PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/Switch.jpg" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Nintendo Switch OLED</h5>
+                <p class="card-text">Pantalla OLED de 7 pulgadas (17.78 cm) - Disfruta de colores brillantes y contrastes definidos en una pantalla que hace que los colores sean más intensos.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $6,399.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/JuegoSwitch.jpg" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Mario Kart 8 Deluxe</h5>
+                <p class="card-text">Mario Kart 8 Deluxe es un videojuego de carreras desarrollado y publicado por Nintendo para la consola Nintendo Switch.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $1,099.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/MandoSwitch.jpg" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Control Nintendo Switch - Joy-Con (L/R)</h5>
+                <p class="card-text">Presentamos Joy-Con, controles que hacen posibles nuevos tipos de juegos, para usar con Nintendo Switch.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $1,499.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/Xbox.jpg" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Xbox Series X</h5>
+                <p class="card-text">La Xbox Series X ofrece velocidades de cuadro sensacionalmente suaves de hasta 120 FPS con la explosión visual que ofrece HDR.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $12,095.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/JuegoXbox.jpg" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Halo Infinite</h5>
+                <p class="card-text">Halo Infinite es un videojuego de disparos en primera persona de la franquicia de videojuegos de ciencia ficción actualmente desarrollada por 343 Industries.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $749.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/MandoXbox.jpg" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Control Inalámbrico Xbox</h5>
+                <p class="card-text">Haz que tu experiencia de juego sea más envolvente con los accesorios y los controles Xbox para las consolas Xbox Series X.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $1,295.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/Xboxone.JPG" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Xbox One S</h5>
+                <p class="card-text">Explora el mundo de Xbox con Xbox One S. Disfruta de miles de juegos, 4K Ultra HD integrado y streaming de video en 4K en la consola Xbox One S.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $8,999.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/MandoXboxone.JPG" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Control Inalámbrico Xbox One - Standard Edition - Blanco</h5>
+                <p class="card-text">Haz que tu experiencia de juego sea más envolvente con los accesorios y los controles Xbox para las consolas Xbox One S.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $1,557.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/JuegoXboxone.JPG" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Call Of Duty Black Ops 2 Xbox One & Series + Mapas De Zombis</h5>
+                <p class="card-text">Esta edición de call of duty incluye el juego base campaña y todos los mapas de zombis.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $500.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/Switchlite.JPG" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Nintendo Switch Lite - Edición Estándar - Azul Turquesa - Standard Edition</h5>
+                <p class="card-text">Les presentamos la Consola Nintendo Switch Lite. Si estás buscando una Consola de videojuegos que sea sólo para ti, la Consola Nintendo Switch Lite está lista para salir contigo a todas partes.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $5,799.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/JuegoSwitchlite.JPG" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">Minecraft - Standard Edition - Nintendo Switch</h5>
+                <p class="card-text">Construye todo lo que puedas imaginar en el modo Creativo, o realiza grandes expediciones en Survival a través de tierras misteriosas y en las profundidades de sus propios mundos infinitos.</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $729.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+
+        <div class="card sas" data-aos="zoom-in" data-aos-duration="1500">
+            <div class="imgcard"><img src="../src/volanteswitch.JPG" class="card-img-top" alt="..."></div>
+            <div class="card-body">
+                <h5 class="card-title">HORI Volante Mario Kart Pro Mini (Nintendo Switch) Standard Nintendo Switch - Mario Kart Edition</h5>
+                <p class="card-text">Volante de carreras completo para Mario Kart y otros títulos de carreras, incluye pedales analógicos sensibles a sus entradas para una experiencia de conducción intensa y realista</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item" id="precio">MXN $729.00</li>
+                <li class="list-group-item">Envío Gratis</li>
+                <li class="list-group-item">★★★★★ opiniones</li>
+            </ul>
+            <div class="card-body">
+                <a href="#" class="card-link">Comprar ahora</a>
+                <a href="#" class="card-link" onclick="agregarcarrito(0, 'Ps5.jpg', 'Consola PlayStation 5', 11799)">Agregar al carrito</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="../js/Addcarrito.js"></script>
+    <script>
+        AOS.init();
+    </script>
+</body>
+
+</html>

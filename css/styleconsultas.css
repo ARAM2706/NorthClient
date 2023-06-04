@@ -1,0 +1,41 @@
+.card {
+    margin: 1rem;
+    width: 70%;
+}
+
+.card-header {
+    background: #00619b;
+    color: white;
+    text-align: center;
+}
+
+.tabladiv {
+    width: 70%;
+}
+
+.tabladiv table {
+    width: 100%;
+}
+
+.conte {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#dashboard {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#dashboard3 {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.conte2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 10px;
+}

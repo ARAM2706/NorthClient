@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.7/dist/iconify-icon.min.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        google.charts.load("current", {
+            packages: ["corechart", "controls", "table"]
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        //hicimos una funcion nueva para darle formato dado que el formato que devuelve la consulta es diferente
+        function formatDate(date) {
+            return dateFns.format(date, "yyyy-MM-dd"); //Cambia el formato del la fecha
+        }
+        async function drawChart() {
+            const combobox = document.getElementById("selecccionaProducto");
+            fetch(`http://localhost:83/Product`)
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    data.forEach((item) => {
+                        const option = document.createElement("option");
+                        option.text = `${item.productName}`;
+                        option.value = `${item.productName}`;
+                        combobox.add(option);
+
+                    });
+                });
+
+            var dashboard = new google.visualization.Dashboard( // se inicializa el dashboard
+                document.getElementById("programmatic_dashboard_div") //obtitienes todo del contenedor dashboard
+            );
+            var programmaticSlider = new google.visualization.ControlWrapper({
+                // inicializacion del controlador , viendo el tipo de controlador
+                //el tipo de controloador viene en el google charts para que filtremos ahi las cdiferentes cosas
+                controlType: "NumberRangeFilter", // filtra de el rango de numeros de total de ventas
+                containerId: "programmatic_control_div", //contenedor que quiere ser ligado
+                options: {
+                    filterColumnLabel: "totalQuantity", // filtra el total de las ventas , si quisiera otra por ejemplo filtrar
+                    //  total de ventas pongo totalsales  que es el nombre de quevuelve la consulta
+                    ui: {
+                        labelStacking: "vertical"
+                    },
+                },
+            });
+
+            //contenedor de la grafica de pastel con opciones
+            //aqui se modificamos sus propiedades
+            var programmaticChart = new google.visualization.ChartWrapper({
+                chartType: "PieChart",
+                containerId: "chart_div",
+                options: {
+                    width: 300,
+                    height: 300,
+                    legend: "none",
+                    chartArea: {
+                        left: 15,
+                        top: 15,
+                        right: 0,
+                        bottom: 0
+                    },
+                    pieSliceText: "value",
+                },
+            });
+            const programmaticTabla = new google.visualization.ChartWrapper({
+                chartType: "Table",
+                containerId: "table_div",
+                options: {
+                    width: 500,
+                    height: 500,
+                    legend: "none",
+                    chartArea: {
+                        left: 15,
+                        top: 15,
+                        right: 0,
+                        bottom: 0
+                    },
+                    pieSliceText: "value",
+                },
+                'view': {
+                    'columns': [1, 2, 3, 4]
+                }
+            });
+
+            const productname = document.getElementById("selecccionaProducto"); // obtienenes el id de la etiqueta donde ingresas el producto
+            const initialDate = document.getElementById("initialDate"); //obtienes la fecha inicial cuando seleccionas la fecha
+            const finalDate = document.getElementById("finalDate"); //obtienes la fecha inicial cuando seleccionas la fecha
+
+            // Obtener los datos de la API 1997-01-01
+            //? query parameters quiero el product name y esl estar date y.....
+            // tample string es para agregar un string con variables dentro
+
+            //obten el valor de la ruta y dentro de esa ruta agregame un string con una variable dentro
+            fetch(
+                    `http://localhost:83/Product/GetSalesofProducts?productName=${productname.value}&startDateStr=${initialDate.value}&endDateStr=${finalDate.value}`
+                )
+                .then((response) => response.json())
+                .then((data) => {
+                    console.log(data);
+                    // Crear el arreglo de datos para el gráfico
+                    var chartData = [
+                        ["productName", "totalQuantity", "month", "totalSales", "year"],
+                    ];
+
+                    data.forEach((item) => {
+                        //en un ciclo metemos los datos del areglo obtenido con los datos de la consulta anterior
+                        chartData.push([
+                            item.productName,
+                            item.totalQuantity,
+                            item.month,
+                            item.totalSales,
+                            item.year,
+                        ]); //ingresar los valor de la api a un arreglo
+                    });
+
+                    // Crear el objeto DataTable de Google Charts
+                    var dataTable = google.visualization.arrayToDataTable(chartData); // convierte el arregleo en datos para la tabla
+
+                    // Configurar opciones del gráfico
+                    var options = {
+                        title: "Total Sales in Year ",
+                        hAxis: {
+                            title: "Month"
+                        },
+                        vAxis: {
+                            title: "Total Sales"
+                        },
+                        legend: "none",
+                    };
+
+                    // Crear el gráfico de barras
+
+                    dashboard.bind(programmaticSlider, programmaticChart).bind(programmaticSlider, programmaticTabla); // se liga la grafica y el control con el dashboard
+                    dashboard.draw(dataTable); // se dibuja el dashboard
+                });
+        }
+
+        // esta funcion ya viene preestablecida y lo que hace
+        function exportToExcel() {
+            alert("hola");
+            var workbook = XLSX.utils.book_new();
+            var worksheet = XLSX.utils.table_to_sheet(
+                document.getElementById("chart_div")
+            );
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+            XLSX.writeFile(workbook, "Grafica3.xlsx"); //configura el nombre del excel
+        }
+    </script>
+</head>
+
+<body>
+    <div class="flex flex-col justify-center items-center bg-zinc-700 p-4 text-3xl text-white font-semibold">
+        <h2>Consultas NWind</h2>
+        <h2 class="text-xl">Consulta 3</h2>
+    </div>
+
+    <div class="flex justify-center items-center">
+        <div class="flex flex-col justify-center items-center border-2 bg border-zinc-700 mt-6 rounded-xl px-3 w-[90%] md:w-[40%]">
+            <h2 class="text-center font-bold text-xl mt-12">Consulta 3</h2>
+            <h2 class="text-center">
+                Para un producto elegido y un periodo indicado mostrar el desglose por mes del comportamiento en ventas de dicho producto
+            </h2>
+            <div class="flex items-center justify-center p-2">
+                <iconify-icon icon="ion:bar-chart" width="80" class="text-blue-500"></iconify-icon>
+            </div>
+        </div>
+    </div>
+
+    <div id="programmatic_dashboard_div" style="border: 1px solid #ccc" class="my-12">
+        <table class="columns flex justify-center items-center">
+            <tr class="flex gap-20 justify-center items-center ">
+                <td>
+                    <div id="programmatic_control_div" style="padding-left: 2em; min-width: 250px"></div>
+                </td>
+                <td>
+                    <div id="chart_div"></div>
+                </td>
+                <td>
+                    <div id="table_div"></div>
+                </td>
+                <div class="flex gap-6 border-2 border-zinc-200 ">
+                    <select name="" id="selecccionaProducto">
+              <option value="chai">chai</option>
+            </select>
+
+
+                    <input class="border-2 border-zinc-400 p-3 hover:border-zinc-400" type="date" value="1997-01-01" id="initialDate" name="fecha" onchange="this.value = formatDate(this.value)" />
+                    <!--cuando detecta un camnio manda llamar a la funcion que cambia el formato-->
+                    <input class="border-2 border-zinc-400 p-3" type="date" value="1997-09-01" id="finalDate" name="fecha" onchange="this.value = formatDate(this.value)" />
+                    <button onclick="drawChart()" class="border-2 border-zinc-400 p-3 bg-orange-500 text-white hover:bg-orange-700">Buscar</button>
+                    <!--redibuja-->
+                </div>
+            </tr>
+        </table>
+
+    </div>
+
+    <div class="md:flex md:justify-center">
+        <div class="flex justify-center items-center py-5 rounded-xl text-2xl font-bold text-white bg-green-600 my-6 mx-3 hover:bg-green-700 md:w-[50%] md:py-2" onclick="exportToExcel()">
+            Generar Excel
+        </div>
+    </div>
+
+    <div class="flex flex-col justify-center items-center bg-blue-500 mx-3 rounded-xl p-6 mb-6">
+        <h2 class="text-white text-2xl pb-3">Mas consultas</h2>
+        <div class="flex flex-col items-center justify-center w-[100%] gap-3 text-white md:flex-row md:text-center">
+            <div class="border-2 w-[70%] p-2 text-xl rounded-xl cursor-pointer hover:bg-blue-700" onclick="aInicio()">
+                Inicio
+            </div>
+            <div class="border-2 w-[70%] p-2 text-xl rounded-xl cursor-pointer hover:bg-blue-700" onclick="aConsulta1()">
+                Consulta 1
+            </div>
+            <div class="border-2 w-[70%] p-2 text-xl rounded-xl cursor-pointer hover:bg-blue-700" onclick="aConsulta2()">
+                Consulta 2
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col bg-zinc-700 h-20">
+        <h2 class="pt-6 pl-6 text-white">
+            Consultas NWind - Sistemas computacionales
+        </h2>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function aConsulta1() {
+        window.location.href = "Grafica1.html";
+    }
+
+    function aConsulta2() {
+        window.location.href = "Grafica2.html";
+    }
+
+    function aConsulta3() {
+        window.location.href = "Grafica3.html";
+    }
+
+    function aInicio() {
+        window.location.href = "Principal.html";
+    }
+</script>
